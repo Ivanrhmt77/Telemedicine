@@ -1,0 +1,14 @@
+# Node.js dependencies
+node_modules/
+
+# Log files
+*.log
+
+# Environment variable files
+backend/.env
+
+# Sistem editor atau IDE
+.DS_Store
+*.swp
+.idea/
+.vscode/
