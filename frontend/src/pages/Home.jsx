@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto">
       <h1 className="text-4xl font-bold text-center mb-8">Welcome to Telemedicine App</h1>
       <div className="bg-white rounded-lg shadow-md p-6">
         <p className="text-lg text-gray-700 mb-4">

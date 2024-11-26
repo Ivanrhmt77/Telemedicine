@@ -35,12 +35,25 @@ module.exports = (mongoose) => {
         )
     );
 
+    // Fungsi untuk mengambil semua dokter yang tersedia
+    Appointment.getAvailableDoctors = async function() {
+        try {
+            // Mengambil semua data dokter dari koleksi dokter
+            const doctors = await mongoose.model('dokter').find();
+            return doctors;
+        } catch (error) {
+            throw error;
+        }
+    };
+
+    // Fungsi untuk membuat appointment
     Appointment.createAppointment = async function(appointmentData, JadwalDokter) {
         try {
+            // Memeriksa apakah jadwal dokter sudah ada pada waktu yang tumpang tindih
             const existingSchedule = await JadwalDokter.findOne({
                 dokter: appointmentData.dokter,
                 tanggal: {
-                    $eq: new Date(appointmentData.tanggal_appointment.toDateString())
+                    $eq: new Date(appointmentData.tanggal_appointment.toDateString()) // Mengambil tanggal saja
                 },
                 $or: [
                     {
@@ -54,13 +67,16 @@ module.exports = (mongoose) => {
                 ]
             });
 
+            // Jika ada jadwal yang tumpang tindih
             if (existingSchedule) {
-                throw new Error('Dokter tidak tersedia pada waktu tersebut. Silahkan pilih waktu lain.');
+                throw new Error('Dokter tidak tersedia pada waktu tersebut. Silakan pilih waktu lain.');
             }
 
+            // Membuat appointment baru
             const appointment = new this(appointmentData);
             await appointment.save();
 
+            // Menyimpan jadwal dokter terkait
             await JadwalDokter.create({
                 dokter: appointmentData.dokter,
                 tanggal: appointmentData.tanggal_appointment,
@@ -71,9 +87,9 @@ module.exports = (mongoose) => {
             return appointment;
 
         } catch (error) {
-            throw error;
+            throw error; // Lemparkan error agar bisa ditangani di luar fungsi ini
         }
     };
-    
+
     return Appointment;
 };
