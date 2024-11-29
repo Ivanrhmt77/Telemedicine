@@ -47,13 +47,13 @@ const Patients = () => {
             setSelectedPatient(null);
             setIsModalOpen(true);
           }}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+          className="font-semibold bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
         >
-          Add Patient
+          + Add Patient
         </button>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto rounded-xl">
         <table className="min-w-full bg-white rounded-lg shadow">
           <thead className="bg-gray-50">
             <tr>
@@ -76,13 +76,13 @@ const Patients = () => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button
                     onClick={() => handleEdit(patient)}
-                    className="text-indigo-600 hover:text-indigo-900 mr-4"
+                    className="text-white font-semibold bg-indigo-600 py-1 px-3 rounded hover:bg-indigo-900 mr-4"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(patient._id)}
-                    className="text-red-600 hover:text-red-900"
+                    className="text-white font-semibold bg-red-600 py-1 px-3 rounded hover:bg-red-900"
                   >
                     Delete
                   </button>

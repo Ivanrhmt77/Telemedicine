@@ -19,7 +19,7 @@ const Navbar = () => {
             <Link
               to="/"
               className={`px-3 py-2 rounded-md ${
-                isActive("/") ? "border-b-2 rounded-none border-blue-500" : "text-gray-600 hover:text-gray-900"
+                isActive("/") ? "border-b-2 rounded-none border-blue-500" : "text-gray-600 hover:text-blue-500"
               }`}
             >
               Home
@@ -27,7 +27,7 @@ const Navbar = () => {
             <Link
               to="/patients"
               className={`px-3 py-2 rounded-md ${
-                isActive("/patients") ? "border-b-2 rounded-none border-blue-500" : "text-gray-600 hover:text-gray-900"
+                isActive("/patients") ? "border-b-2 rounded-none border-blue-500" : "text-gray-600 hover:text-blue-500"
               }`}
             >
               Patients
@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link
               to="/doctors"
               className={`px-3 py-2 rounded-md ${
-                isActive("/doctors") ? "border-b-2 rounded-none border-blue-500" : "text-gray-600 hover:text-gray-900"
+                isActive("/doctors") ? "border-b-2 rounded-none border-blue-500" : "text-gray-600 hover:text-blue-500"
               }`}
             >
               Doctors

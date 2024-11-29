@@ -56,9 +56,10 @@ const Doctors = () => {
   };
 
   const handleCreateAppointment = (doctor) => {
+    console.log('Selected Doctor:', doctor); // Log the doctor object
     setSelectedDoctor(doctor);
     setAppointmentModalOpen(true);
-  };
+};
 
   return (
     <div>
@@ -69,9 +70,9 @@ const Doctors = () => {
             setSelectedDoctor(null);
             setDoctorModalOpen(true);
           }}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+          className="font-semibold bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
         >
-          Add Doctor
+          + Add Doctor
         </button>
       </div>
 
@@ -91,28 +92,28 @@ const Doctors = () => {
                 <td className="px-6 py-4 whitespace-nowrap">{doctor.nama}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{doctor.spesialisasi}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{doctor.no_telepon}</td>
-                <td className="px-6 py-4 whitespace-nowrap space-x-2">
+                <td className="px-6 py-4 whitespace-nowrap space-x-4">
                   <button
                     onClick={() => handleViewSchedule(doctor)}
-                    className="text-green-600 hover:text-green-900"
+                    className="border border-gray-400 text-gray-600 font-semibold py-1 px-3 rounded hover:bg-gray-300"
                   >
                     Schedule
                   </button>
                   <button
                     onClick={() => handleCreateAppointment(doctor)}
-                    className="text-blue-600 hover:text-blue-900"
+                    className="text-white font-semibold bg-green-600 py-1 px-3 rounded hover:bg-green-900"
                   >
-                    Appointment
+                    + Appointment
                   </button>
                   <button
                     onClick={() => handleEdit(doctor)}
-                    className="text-indigo-600 hover:text-indigo-900"
+                    className="text-white font-semibold bg-indigo-600 py-1 px-3 rounded hover:bg-indigo-900"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(doctor._id)}
-                    className="text-red-600 hover:text-red-900"
+                    className="text-white font-semibold bg-red-600 py-1 px-3 rounded hover:bg-red-900"
                   >
                     Delete
                   </button>

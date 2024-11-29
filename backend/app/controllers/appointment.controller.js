@@ -3,6 +3,15 @@ const Appointment = db.appointment;
 
 exports.create = async (req, res) => {
     try {
+        console.log('Received appointment data:', req.body);
+        
+        // Validate dokter field
+        if (!req.body.dokter) {
+            return res.status(400).send({
+                message: "Dokter ID is required"
+            });
+        }
+
         const appointmentData = {
             pasien: req.body.pasien,
             dokter: req.body.dokter,
@@ -15,6 +24,7 @@ exports.create = async (req, res) => {
         const appointment = await Appointment.createAppointment(appointmentData, db.jadwalDokter);
         res.status(201).send(appointment);
     } catch (err) {
+        console.error('Full error:', err);
         res.status(500).send({
             message: err.message || "Terjadi kesalahan saat membuat appointment."
         });

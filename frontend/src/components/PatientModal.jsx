@@ -73,7 +73,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
               type="text"
               value={formData.nama}
               onChange={(e) => setFormData({ ...formData, nama: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               required
             />
           </div>
@@ -83,7 +83,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
               type="date"
               value={formData.tanggal_lahir}
               onChange={(e) => setFormData({ ...formData, tanggal_lahir: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               required
             />
           </div>
@@ -92,7 +92,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
             <select
               value={formData.jenis_kelamin}
               onChange={(e) => setFormData({ ...formData, jenis_kelamin: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               required
             >
               <option value="">Select gender</option>
@@ -105,7 +105,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
             <textarea
               value={formData.alamat}
               onChange={(e) => setFormData({ ...formData, alamat: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 h-20 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -114,7 +114,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
               type="tel"
               value={formData.no_telepon}
               onChange={(e) => setFormData({ ...formData, no_telepon: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -123,7 +123,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -131,7 +131,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
             <textarea
               value={formData.riwayat_penyakit}
               onChange={(e) => setFormData({ ...formData, riwayat_penyakit: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 h-20 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -141,7 +141,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
                 type="number"
                 value={formData.tinggi_badan}
                 onChange={(e) => setFormData({ ...formData, tinggi_badan: e.target.value })}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
             <div>
@@ -150,7 +150,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
                 type="number"
                 value={formData.berat_badan}
                 onChange={(e) => setFormData({ ...formData, berat_badan: e.target.value })}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
           </div>
@@ -158,7 +158,7 @@ const PatientModal = ({ isOpen, onClose, patient, onSuccess }) => {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md"
+              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border-gray-400 hover:bg-gray-200 rounded-md border"
             >
               Cancel
             </button>

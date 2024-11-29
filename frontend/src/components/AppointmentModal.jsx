@@ -4,12 +4,13 @@ const AppointmentModal = ({ isOpen, onClose, doctor }) => {
   const [patients, setPatients] = useState([]);
   const [formData, setFormData] = useState({
     pasien: '',
-    dokter: doctor ? doctor._id : '',
+    dokter: doctor ? doctor._id : '', // Ensure this is correctly setting the doctor ID
     tanggal_appointment: '',
     waktu_mulai: '',
     waktu_selesai: '',
     status: 'pending'
   });
+
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [doctorSchedules, setDoctorSchedules] = useState([]);
@@ -54,30 +55,37 @@ const AppointmentModal = ({ isOpen, onClose, doctor }) => {
     setErrorMessage('');
     setSuccessMessage('');
 
-    // Pastikan ID dokter valid
-    if (!formData.dokter) {
-        setErrorMessage('Dokter harus dipilih.');
-        return;
-    }
+    // Add console logs to check the data
+    console.log('Form Data:', formData);
+    console.log('Doctor:', doctor);
 
     try {
         const response = await fetch('http://localhost:8000/api/appointment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
+            body: JSON.stringify({
+                ...formData,
+                dokter: doctor ? doctor._id : '' // Explicitly pass doctor ID
+            }),
         });
 
+        console.log('Response:', response);
+
         if (response.ok) {
+            const result = await response.json();
+            console.log('Appointment created:', result);
             setSuccessMessage('Appointment berhasil dibuat!');
-            onClose(); // Tutup modal atau lakukan navigasi sesuai kebutuhan
+            onClose();
         } else {
             const errorData = await response.json();
+            console.error('Error response:', errorData);
             setErrorMessage(errorData.message || 'Gagal membuat appointment');
         }
     } catch (error) {
+        console.error('Submission error:', error);
         setErrorMessage('Terjadi kesalahan saat membuat appointment');
     }
-};
+  };
 
 
   if (!isOpen) return null;
@@ -99,7 +107,7 @@ const AppointmentModal = ({ isOpen, onClose, doctor }) => {
               name="pasien"
               value={formData.pasien}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             >
               <option value="">-- Select Patient --</option>
@@ -122,7 +130,7 @@ const AppointmentModal = ({ isOpen, onClose, doctor }) => {
               name="tanggal_appointment"
               value={formData.tanggal_appointment}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             />
           </div>
@@ -138,7 +146,7 @@ const AppointmentModal = ({ isOpen, onClose, doctor }) => {
               name="waktu_mulai"
               value={formData.waktu_mulai}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             />
           </div>
@@ -154,25 +162,25 @@ const AppointmentModal = ({ isOpen, onClose, doctor }) => {
               name="waktu_selesai"
               value={formData.waktu_selesai}
               onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 p-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             />
           </div>
 
           {/* Buttons */}
-          <div className="flex justify-end mt-6">
+          <div className="flex justify-end space-x-4">
             <button
               type="button"
               onClick={onClose}
-              className="mr-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-400 hover:bg-gray-200 rounded-md"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              className="px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-md"
             >
-              Create Appointment
+              Creater Appointment
             </button>
           </div>
         </form>
